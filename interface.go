@@ -7,6 +7,7 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"testing.com/interface/concurrency"
+	. "testing.com/interface/methods"
 )
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,6 +77,42 @@ func main() {
 	const Birthday = "12/05"
 	fmt.Println(Birthday)
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	// FLOW CONTROL
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// LOOPS
+	// Go has only one looping construct, the for loop.
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+	fmt.Println("The sum is", sum)
+
+	// The init and post statements are optional.
+	sum2 := 1
+	for ; sum2 <= 100; {
+		sum2 += sum2
+	}
+	fmt.Println("The sum2 is", sum2)
+
+	// you can drop the semicolons: C's while is spelled for in Go.
+	sum3 := 1
+	for sum3 < 1000 {
+		sum3 += sum3
+	}
+	fmt.Println("The sum3 is", sum3)
+
+	// Infinite loop
+	// for {
+	// }
+
+	// IF...ELSE
+	// SWITCH
+	// DEFER
+
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// CONCURRENCY
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -97,4 +134,15 @@ func main() {
 	ch <- 2
 	fmt.Println(<-ch)
 	fmt.Println(<-ch)
+
+	
+	v := Vertex{3, 4}
+	v.Scale(10)
+	fmt.Print("Abs is ")
+	fmt.Println(v.Abs())
+	// fmt.Println(Abs(v))
+
+	myfloat := MyFloat(1)
+	fmt.Println(myfloat.Abs())
+	
 }
